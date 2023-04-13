@@ -62,6 +62,62 @@
   </header>
   <main>
 
+  <div class="container">
+  <div class="mb-3">
+    <label for="filter" class="form-label">Filter</label>
+    <input type="text"
+      class="form-control" name="filter" id="filter" aria-describedby="helpId" placeholder="Enter text to filter" onkeyup="filter()">
+  </div>
+
+  <!-- <button name="button" id="" class="btn btn-primary" href="#" role="button" onclick="filter()">Filter</button> -->
+
+
+  <div class="list-group my-3" id="list">
+    <div class="list-group ">
+      <a href="#" class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">
+        abc
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">xyz</a>
+      <a href="#" class="list-group-item list-group-item-action">ahjfu</a>
+      <a href="#" class="list-group-item list-group-item-action">123457</a>
+    </div>
+    <div class="list-group ">
+      <a href="#" class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">
+        ac
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">yz</a>
+      <a href="#" class="list-group-item list-group-item-action">ajfu</a>
+      <a href="#" class="list-group-item list-group-item-action">12347</a>
+    </div>
+    <div class="list-group ">
+      <a href="#" class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">
+        abc
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">xy</a>
+      <a href="#" class="list-group-item list-group-item-action">hjfu</a>
+      <a href="#" class="list-group-item list-group-item-action">23457</a>
+    </div>
+    <div class="list-group ">
+      <a href="#" class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">
+        c
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">z</a>
+      <a href="#" class="list-group-item list-group-item-action">hju</a>
+      <a href="#" class="list-group-item list-group-item-action">1457</a>
+    </div>
+    <div class="list-group ">
+      <a href="#" class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">
+        abc
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">xy</a>
+      <a href="#" class="list-group-item list-group-item-action">aju</a>
+      <a href="#" class="list-group-item list-group-item-action">135</a>
+    </div>
+  </div>
+
+  </div>
+
+
   </main>
   <footer>
     <!-- place footer here -->
@@ -75,5 +131,19 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
 </body>
+  <script>
+    function filter() {
+
+      let filter_query = document.getElementById("filter").value;
+
+      document.querySelectorAll("div.list-group>a:not(.list-group-item-primary)").forEach(a => {
+        if (!a.innerText.startsWith(filter_query)) {
+          a.style.display = 'none';
+        } else {
+          a.style.display = 'block'
+        }
+      })
+    }
+  </script>
 
 </html>
