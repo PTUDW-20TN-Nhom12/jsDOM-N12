@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Title</title>
+  <title>20120536</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -61,6 +61,40 @@
     
   </header>
   <main>
+    <div class="container">
+      <nav aria-label="Page navigation">
+        <ul class="pagination    ">
+          <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hover added -->
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">1</a>
+        <a href="#" class="list-group-item list-group-item-action">2</a>
+        <a href="#" class="list-group-item list-group-item-action">3</a>
+        <a href="#" class="list-group-item list-group-item-action">4</a>
+        <a href="#" class="list-group-item list-group-item-action">5</a>
+        <a href="#" class="list-group-item list-group-item-action">6</a>
+        <a href="#" class="list-group-item list-group-item-action">7</a>
+        <a href="#" class="list-group-item list-group-item-action">8</a>
+        <a href="#" class="list-group-item list-group-item-action">9</a>
+        <a href="#" class="list-group-item list-group-item-action">10</a>
+        <a href="#" class="list-group-item list-group-item-action">11</a>
+        <a href="#" class="list-group-item list-group-item-action">12</a>
+        <a href="#" class="list-group-item list-group-item-action">13</a>
+        <a href="#" class="list-group-item list-group-item-action">14</a>
+        <a href="#" class="list-group-item list-group-item-action">15</a>
+        <a href="#" class="list-group-item list-group-item-action">16</a>
+        <a href="#" class="list-group-item list-group-item-action">17</a>
+        <a href="#" class="list-group-item list-group-item-action">18</a>
+        <a href="#" class="list-group-item list-group-item-action">19</a>
+        <a href="#" class="list-group-item list-group-item-action">20</a>
+      </div>
+    </div>
 
   </main>
   <footer>
@@ -75,5 +109,39 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
 </body>
+
+  <script>
+    window.onload = (event) => {
+      let lis = document.querySelectorAll("ul.pagination>li")
+      for (let i = 0; i < lis.length; i++) {
+        lis[i].addEventListener("click", () => changePage(i));
+      }
+      changePage(0);
+    }
+
+    function changePage(idx) {
+      let lis = document.querySelectorAll("ul.pagination>li")
+      if (0 <= idx && idx < lis.length) {
+        // UI update
+        document.querySelector("ul.pagination>li.active").classList.remove("active");        
+        document.querySelector(`ul.pagination>li:nth-child(${idx + 1})`).classList.add("active")
+
+        let page_size = 5;
+
+        let list = document.querySelectorAll("div.list-group>a")
+        let page = [idx * page_size, Math.min((idx + 1) * page_size, list.length)]
+
+        for (let i = 0; i < list.length; i++) {
+          if (page[0] <= i && i < page[1]) {
+            list[i].style.display='block'
+          } else {
+            list[i].style.display='none'
+          }
+        }
+
+      }
+    }
+
+  </script>
 
 </html>
